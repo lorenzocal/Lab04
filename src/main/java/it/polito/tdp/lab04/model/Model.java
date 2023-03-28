@@ -33,5 +33,9 @@ public class Model {
 		return this.iscrizioneDAO.verificaIscrizioneCorso(s, c);
 	}
 	
+	public void iscriviStudenteACorso(Studente studente, Corso corso) {
+		this.iscrizioneDAO.iscriviStudenteACorso(studente, corso);
+	}
+	
 	
 }

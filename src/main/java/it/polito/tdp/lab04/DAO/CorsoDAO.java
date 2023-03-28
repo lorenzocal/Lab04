@@ -97,15 +97,6 @@ public class CorsoDAO {
 		}
 	}
 
-	/*
-	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
-	 */
-	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
-		// TODO
-		// ritorna true se l'iscrizione e' avvenuta con successo
-		return false;
-	}
-	
 	
 	public List<Corso> getCorsiStudente(int matricola){
 

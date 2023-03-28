@@ -148,6 +148,46 @@ public class FXMLController {
 
     @FXML
     void handleIscrivi(ActionEvent event) {
+    	try {
+    		
+    		int matricola = Integer.parseInt(this.txtMatricola.getText());
+    		Studente studente = this.model.getStudente(matricola);
+    		
+    		if (studente != null){
+    			
+    			Corso corso = this.listaCorsi.getValue();
+    			
+    			if (corso == null) {
+    				
+    				this.txtRisultato.appendText("Errore nella procedura di iscrizione. Non è stato selezionato alcun corso.\n");
+    			
+    			}
+    			else {
+    				
+    				if (this.model.verificaIscrizioneCorso(studente, corso) == true) {
+        	    		
+        				this.txtRisultato.appendText("Errore nella procedura di iscrizione. Lo studente risulta già iscritto al corso selezionato.\n");
+        	    	
+        			}
+        	    	else {
+        	    		
+        	    		this.model.iscriviStudenteACorso(studente, corso);
+        	    		this.txtRisultato.appendText("Lo studente è stato correttamente iscritto al corso selezionato.\n");
+        	    	
+        	    	}
+    			}
+    		}
+    		else {
+    			
+    			this.txtRisultato.appendText("Errore nella procedura di iscrizione. Non esiste alcuno studente avente tale matricola.\n");
+    		
+    		}
+    	}
+    	catch (NumberFormatException nfe) {
+    		
+    		this.txtRisultato.appendText("Errore nella procedura di iscrizione. La matricola inserita contiene caratteri non permessi.\n");
+    	
+    	}
 
     }
     
